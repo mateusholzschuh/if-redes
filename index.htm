@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Redes - 7º info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body style="padding-top: 55px">
+    <!-- navbar -->
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30"
+                    class="d-inline-block align-top" alt="">
+                HOLZSCHUH
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#bd">Binário-Decimal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#db">Decimal-Binário</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mk">Máscaras</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sr">Subredes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#oh">Outros</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- content -->
+    <main class="container mt-2 p-4">
+        <article class="card mb-4">
+            <header class="card-header">
+                <h2>Conversões</h2>
+            </header>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3" id="bd">
+                        <div class="card">
+                            <header class="card-header">
+                                <h5>Binário para decimal</h5>
+                                <p class="text-muted small">Para mais de um número separe-os com pontos. <i>Exemplo:
+                                        <strong>0011.0001</strong> => <strong>3, 1</strong></i></p>
+                            </header>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Número(s) em binário</label>
+                                    <input type="text" id="btd" class="form-control"
+                                        placeholder="Digite o(s) número(s) binário(s). Ex: 00001111">
+                                </div>
+                                <div class="mt-2" id="btdo"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3" id="db">
+                        <div class="card">
+                            <header class="card-header">
+                                <h5>Decimal para binário</h5>
+                                <p class="text-muted small">Para mais de um número separe-os com pontos. <i>Exemplo:
+                                        <strong>3, 1</strong> => <strong>0011.0001</strong></i></p>
+                            </header>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Número(s) em decimal</label>
+                                    <input type="text" id="dtb" class="form-control"
+                                        placeholder="Digite o(s) número(s) decimal(is). Ex: 4">
+                                </div>
+                                <div class="mt-2" id="dtbo"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3" id="mk">
+                        <div class="card">
+                            <header class="card-header">
+                                <h5>Máscara de rede</h5>
+                                <p class="text-muted small">Converter entre os formatos <i>decimal, binária, e por
+                                        contagem de bits.</i></p>
+                            </header>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Máscara em decimal</label>
+                                    <input type="text" id="md" class="form-control"
+                                        placeholder="Digite a máscara em decimal">
+                                </div>
+                                <div class="form-group">
+                                    <label>Máscara em binário</label>
+                                    <input type="text" id="mb" class="form-control"
+                                        placeholder="Digite a máscara em decimal">
+                                </div>
+                                <div class="form-group">
+                                    <label>Máscara em contagem de bits</label>
+                                    <input type="text" id="mc" class="mb-1 form-control"
+                                        placeholder="Digite número de bits da máscara">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3" id="sr">
+                        <div class="card">
+                            <header class="card-header">
+                                <h5>Subredes</h5>
+                                <p class="text-muted small">Cálculo de subredes e suas faixas de IP. (Somente para
+                                    máscaras do tipo 255.255.255.xxx)</p>
+                            </header>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Número de subredes</label>
+                                    <input type="text" id="srd" class="form-control"
+                                        placeholder="Digite o número de subredes">
+                                </div>
+                                <div id="srdo"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="card mb-4" id="oh">
+            <header class="card-header">
+                <h2>Informações aleatórias</h2>
+            </header>
+            <div class="card-body row">
+                <div class="col-md-6">
+                    <header>
+                        <h5>Endereços locais</h5>
+                        <p class="text-muted small">Endereços que apenas podem ser utilizados na rede local.</p>
+                    </header>
+                    <div>
+                        <ul>
+                            <li class="card-text"><strong>127.0.0.1</strong> (<i>loopback</i>, ou <i>localhost</i>)</li>
+                            <li class="card-text"><strong>10.0.0.0</strong> até <strong>10.255.255.255</strong></li>
+                            <li class="card-text"><strong>172.16.0.0</strong> até <strong>172.31.255.255</strong></li>
+                            <li class="card-text"><strong>192.168.0.0</strong> até <strong>192.168.255.255</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <header>
+                        <h5>Classes dos endereços IP</h5>
+                        <p class="text-muted small">Conforme o primeiro octeto do endereço IP, eles são classificados em
+                            <i>classes</i></p>
+                    </header>
+                    <div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Classe</th>
+                                    <th>Faixa do primeiro octeto</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Classe <strong>A</strong></td>
+                                    <td>1 - 127</td>
+                                    <td class="small">Exemplo: 125.46.87.44</td>
+                                </tr>
+                                <tr>
+                                    <td>Classe <strong>B</strong></td>
+                                    <td>128 - 191</td>
+                                    <td class="small">Exemplo: 187.46.87.44</td>
+                                </tr>
+                                <tr>
+                                    <td>Classe <strong>C</strong></td>
+                                    <td>192 - 223</td>
+                                    <td class="small">Exemplo: 222.46.87.44</td>
+                                </tr>
+                                <tr>
+                                    <td>Classe <strong>D</strong></td>
+                                    <td>224 - 239</td>
+                                    <td class="small">??? (multicast)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        window.addEventListener("hashchange", function() { scrollBy(0, -80) });
+        $(document).ready(() => {
+            // binário pra decimal
+            $('#btd').on('keyup', () => {
+                a = $('#btd').val().split('.')
+                s = ''
+                a.forEach(e => {
+                    x = parseInt(e, 2).toString(10);
+                    s += `${e} -> ${x}<br>`
+                })
+                $('#btdo').html(s)
+            })
+
+            // decimal para binário
+            $('#dtb').on('keyup', () => {
+                a = $('#dtb').val().split('.')
+                s = ''
+                a.forEach(e => {
+                    x = parseInt(e, 10).toString(2);
+                    s += `${e} -> ${x}<br>`
+                })
+                $('#dtbo').html(s)
+            })
+
+            // máscaras
+            let md = $('#md')
+            let mb = $('#mb')
+            let mc = $('#mc')
+
+            md.on('keyup', () => {
+                let b = []
+                let c = 0
+                md.val().split('.').forEach(e => {
+                    c += bitCount(e)
+                    b.push(format(parseInt(e, 10).toString(2)))
+                })
+                mb.val(b.join('.'))
+                mc.val(c)
+            })
+
+            mb.on('keyup', () => {
+                let d = []
+                let c = 0
+                mb.val().split('.').forEach(e => {
+                    x = parseInt(e, 2).toString(10)
+                    c += bitCount(x)
+                    d.push(x)
+                })
+                md.val(d.join('.'))
+                mc.val(c)
+            })
+
+            mc.on('keyup', () => {
+                let n = parseInt(mc.val(), 10)
+                x = ''
+                for (i = 0; i < n; ++i)
+                    x += '1'
+                p = x.length;
+                for (i = 0; i < 32 - p; ++i)
+                    x += '0'
+                let b = x.match(/.{8}/g);
+                mb.val(b.join('.'))
+                let d = []
+                b.forEach(e => {
+                    d.push(parseInt(e, 2).toString(10))
+                })
+                md.val(d.join('.'))
+            })
+
+            // subredes
+            let srd = $('#srd')
+            srd.on('keyup', (e) => {
+                if (e.keyCode == 8) return
+                let x = parseInt(srd.val(), 10)
+                srd.val(nextPwr(x))
+                x = parseInt(srd.val(), 10)
+                let n = 256 / x
+                let o = `<p>Número de endereços em cada subrede: <strong>${n}</strong></p>
+                         <p>Número de endereços válidos em cada subrede: <strong>${n - 2}</strong></p>`
+                let o2 = ''
+                for (i = 0; i < x; ++i) {
+                    o2 += `<tr>
+                                <td>${i + 1}</td>
+                                <td>.${n * i} - .${n * (i + 1) - 1}</td>
+                                <td>.${n * i}</td>
+                                <td>.${n * (i + 1) - 1}</td>
+                            </tr>`
+                }
+                let o3 = `<table class="table table-responsive">
+                            <tr>
+                                <th>Nº da Subrede</th>
+                                <th>Faixa de IPs</th>
+                                <th>netid</th>
+                                <th>Broadcast</th>
+                            </tr>
+                            ${o2}
+                        </table>`
+                $('#srdo').html(o.concat(o3))
+            })
+
+            const format = (n) => {
+                x = n.length;
+                o = ''
+                for (i = 0; i < 8 - x; ++i)
+                    o += '0'
+                return o.concat(n)
+            }
+
+            const bitCount = (n) => {
+                n = n - ((n >> 1) & 0x55555555)
+                n = (n & 0x33333333) + ((n >> 2) & 0x33333333)
+                return ((n + (n >> 4) & 0xF0F0F0F) * 0x1010101) >> 24
+            }
+
+            const nextPwr = (n) => {
+                n--;
+                n |= n >> 1;
+                n |= n >> 2;
+                n |= n >> 4;
+                n |= n >> 8;
+                n |= n >> 16;
+                return ++n;
+            }
+        });
+    </script>
+</body>
+
+</html>
